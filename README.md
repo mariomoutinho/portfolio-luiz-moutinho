@@ -1,67 +1,63 @@
-# Portfolio Luiz Moutinho
+# Portfólio — Luiz Moutinho
 
-Portfolio profissional de Luiz Moutinho, Desenvolvedor Web e UX Designer. A SPA apresenta projetos verificados no workspace, estudos de caso, processo, competencias, formacao e contato.
-
-![Preview social do portfolio](public/og-image.svg)
-
-## Funcionalidades
-
-- Navegacao responsiva com indicacao de secao
-- Seis projetos em destaque renderizados por dados
-- Estudos de caso acessiveis em dialogos
-- Projetos adicionais, processo, competencias e formacao
-- Copia de e-mail, `mailto`, WhatsApp e GitHub
-- SEO, Open Graph, dados estruturados, sitemap e robots
-- Respeito a `prefers-reduced-motion`
+Currículo online responsivo desenvolvido para a atividade de Fundamentos da Programação Web da UNINTER. O conteúdo apresenta a trajetória de Luiz Moutinho entre saúde, movimento humano e desenvolvimento de software, além de formação e projetos reais.
 
 ## Tecnologias
 
-Vite, React 19, TypeScript, CSS, Lucide, Vitest, Testing Library e ESLint.
+- HTML5 semântico
+- CSS3 puro, com layout mobile-first e temas claro/escuro
+- JavaScript puro para menu, tema e validação do formulário
+
+Não há frameworks, bibliotecas, recursos por CDN, dependências npm ou etapa de build.
 
 ## Estrutura
 
 ```text
-src/data/projects.ts   conteudo dos projetos
-src/App.tsx            componentes e secoes
-src/styles.css         identidade e responsividade
-docs/                  inventario, fontes e decisoes
-public/                imagens e arquivos de SEO
+.
+├── index.html
+├── formacao.html
+├── portfolio.html
+├── contato.html
+├── assets/
+│   ├── css/
+│   │   └── styles.css
+│   ├── js/
+│   │   └── main.js
+│   └── img/
+├── README.md
+└── .gitignore
 ```
 
-## Executar e validar
+## Execução local
+
+Na raiz do projeto, inicie qualquer servidor HTTP estático. Com Python:
 
 ```bash
-npm install
-npm run dev
-npm run type-check
-npm run lint
-npm run test
-npm run check:links
-npm run build
+python3 -m http.server 8000
 ```
 
-O build fica em `dist/`. `vite.config.ts` usa `/portfolio-luiz-moutinho/` no GitHub Actions e `/` localmente.
+Abra `http://localhost:8000`. O site também permanece legível ao abrir os arquivos HTML diretamente, mas um servidor representa melhor o ambiente do GitHub Pages.
 
-## Publicacao
+## Recursos
 
-1. Crie o repositorio `portfolio-luiz-moutinho` no GitHub.
-2. Envie a branch `main`.
-3. Em **Settings > Pages**, selecione **GitHub Actions**.
-4. O workflow `.github/workflows/deploy.yml` valida tipos, lint, testes e build antes do deploy.
+- Quatro páginas independentes com navegação consistente
+- Página atual indicada visualmente e por `aria-current`
+- Menu móvel operável por botão e tecla Escape
+- Tema inicial alinhado ao sistema, com preferência persistida
+- Formulário demonstrativo com erros em texto, foco no primeiro campo inválido e confirmação acessível
+- Contraste, foco visível e suporte a `prefers-reduced-motion`
+- Caminhos relativos compatíveis com páginas de projeto no GitHub Pages
 
-## Atualizacao de conteudo
+O formulário não envia dados nem faz requisições de rede.
 
-- Edite projetos em `src/data/projects.ts`.
-- Substitua imagens em `public/images/` e atualize `image`/`imageAlt`.
-- Edite contato em `src/App.tsx` e os metadados em `index.html`.
-- Uma foto profissional pode substituir o bloco visual do hero; nenhuma foto pessoal adequada foi encontrada no workspace.
+## Publicação no GitHub Pages
 
-## Decisoes e fontes
+1. Envie os arquivos para a branch `main` do repositório.
+2. Acesse **Settings > Pages** no GitHub.
+3. Em **Build and deployment**, escolha **Deploy from a branch**.
+4. Selecione a branch `main`, diretório `/ (root)`, e salve.
+5. Aguarde a publicação em `https://mariomoutinho.github.io/portfolio-luiz-moutinho/`.
 
-Veja `docs/project-inventory.md`, `docs/content-sources.md` e `docs/ux-decisions.md`. O inventario consolidou copias relacionadas e omitiu credenciais, bancos, dependencias e builds.
+## Fontes do conteúdo
 
-## Limitacoes
-
-- Nem todos os projetos puderam ser executados: alguns exigem banco, Docker ou configuracao privada.
-- Nao foram confirmadas URLs publicas para todos os trabalhos.
-- O Google Fonts possui fallback local; para isolamento total, as fontes podem ser hospedadas no proprio projeto.
+Formação, certificações e contatos foram confirmados pelo currículo e perfil profissional fornecidos pelo titular. Os projetos e tecnologias foram verificados nos repositórios presentes no workspace. Não foram incluídas métricas, idiomas, datas, experiências ou projetos sem evidência.

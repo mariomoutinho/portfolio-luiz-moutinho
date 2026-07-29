@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://mariomoutinho.github.io/portfolio-luiz-moutinho/sitemap.xml

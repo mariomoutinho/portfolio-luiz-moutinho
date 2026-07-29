@@ -1,27 +1,104 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Luiz Moutinho | Desenvolvedor Web e UX Designer</title>
-    <meta name="description" content="Portfólio de Luiz Moutinho, desenvolvedor web e estudante de Análise e Desenvolvimento de Sistemas, com projetos em front-end, UX, automação e inteligência artificial." />
-    <link rel="canonical" href="https://mariomoutinho.github.io/portfolio-luiz-moutinho/" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="Luiz Moutinho | Desenvolvedor Web e UX Designer" />
-    <meta property="og:description" content="Projetos em front-end, UX, automação e inteligência artificial." />
-    <meta property="og:url" content="https://mariomoutinho.github.io/portfolio-luiz-moutinho/" />
-    <meta property="og:image" content="https://mariomoutinho.github.io/portfolio-luiz-moutinho/og-image.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Luiz Moutinho | Desenvolvedor Web e UX Designer" />
-    <meta name="twitter:description" content="Projetos em front-end, UX, automação e inteligência artificial." />
-    <script type="application/ld+json">
-      {"@context":"https://schema.org","@graph":[{"@type":"Person","name":"Luiz Moutinho","jobTitle":"Desenvolvedor Web e UX Designer","email":"mailto:luizmariomoutinho1@gmail.com","url":"https://mariomoutinho.github.io/portfolio-luiz-moutinho/","sameAs":["https://github.com/mariomoutinho"],"alumniOf":{"@type":"CollegeOrUniversity","name":"Centro Universitário Internacional — UNINTER"}},{"@type":"WebSite","name":"Portfólio de Luiz Moutinho","url":"https://mariomoutinho.github.io/portfolio-luiz-moutinho/","inLanguage":"pt-BR"}]}
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Conheça Luiz Moutinho, estudante de Análise e Desenvolvimento de Sistemas em Recife, com trajetória nas áreas de saúde e tecnologia.">
+  <title>Sobre mim | Luiz Moutinho</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script>
+    /* Aplicado antes do CSS para evitar a troca visível de tema no carregamento. */
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    } catch {
+      document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Luiz Moutinho — página inicial"><span class="brand-mark" aria-hidden="true">LM</span><span>Luiz Moutinho<small>desenvolvimento em curso</small></span></a>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Ativar tema escuro"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Tema</span></button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span aria-hidden="true"></span><span class="sr-only">Abrir menu</span></button>
+      </div>
+      <nav id="menu-principal" class="site-nav" aria-label="Navegação principal">
+        <a href="index.html" aria-current="page">Sobre mim</a>
+        <a href="formacao.html">Formação</a>
+        <a href="portfolio.html">Portfólio</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Recife, Pernambuco</p>
+        <h1>Entre o cuidado humano e a <em>lógica do código.</em></h1>
+        <p class="hero-lead">Sou Luiz Moutinho, estudante de Análise e Desenvolvimento de Sistemas. Trago para a tecnologia a escuta, a disciplina e o olhar atento que desenvolvi trabalhando com saúde e movimento humano.</p>
+        <div class="button-row">
+          <a class="button button-primary" href="portfolio.html">Conhecer meus projetos <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="formacao.html">Ver minha formação</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Monograma de Luiz Moutinho">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="monogram"><span>LM</span><small>REC · PE</small></div>
+        <p class="visual-note"><span aria-hidden="true">✦</span> Construindo soluções com propósito</p>
+      </div>
+    </section>
+
+    <section class="statement">
+      <div class="shell statement-grid">
+        <p class="section-index">01 — Trajetória</p>
+        <div>
+          <h2>Uma mudança de área que soma experiências.</h2>
+          <p>Minha trajetória começou como personal trainer e acupunturista, profissões em que compreender pessoas, observar detalhes e acompanhar processos faz toda a diferença. Hoje, durante a graduação na UNINTER, levo essas mesmas competências para o desenvolvimento de software.</p>
+          <p>Não vejo essa passagem como um recomeço do zero. É uma integração: o raciocínio construído na prática em saúde encontra a programação, o design de experiências e a vontade de transformar problemas reais em ferramentas úteis.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell values-section">
+      <div class="section-heading">
+        <div><p class="eyebrow"><span></span> O que levo comigo</p><h2>Princípios que atravessam minha jornada</h2></div>
+        <p>Fundamentos humanos aplicados a uma nova linguagem profissional.</p>
+      </div>
+      <div class="value-grid">
+        <article class="value-card"><span class="card-number">01</span><h3>Escuta antes da solução</h3><p>Entender o contexto e a necessidade vem antes de escolher ferramentas ou escrever código.</p></article>
+        <article class="value-card featured"><span class="card-number">02</span><h3>Evolução consistente</h3><p>Aprender, praticar, testar e melhorar: avanços pequenos e contínuos constroem bases sólidas.</p></article>
+        <article class="value-card"><span class="card-number">03</span><h3>Tecnologia com propósito</h3><p>Quero criar experiências claras, acessíveis e conectadas a problemas que importam.</p></article>
+      </div>
+    </section>
+
+    <section class="shell interests">
+      <div class="interest-panel">
+        <div><p class="eyebrow eyebrow-light"><span></span> Interesses atuais</p><h2>Onde minha curiosidade está agora</h2></div>
+        <ul class="tag-list" aria-label="Interesses de Luiz">
+          <li>Desenvolvimento web</li><li>Experiência do usuário</li><li>Automação de processos</li><li>Inteligência artificial</li><li>Saúde e movimento</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="next-step shell">
+      <p class="section-index">Próximo passo</p>
+      <div><h2>Quer ver essa trajetória em prática?</h2><p>Conheça minha formação e os projetos que venho construindo enquanto desenvolvo novas competências.</p></div>
+      <a class="circle-link" href="portfolio.html" aria-label="Ir para o portfólio">→</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="footer-brand" href="index.html">Luiz Moutinho</a><p>Saúde, movimento e tecnologia em uma trajetória de aprendizado contínuo.</p></div>
+      <nav aria-label="Navegação do rodapé"><p>Navegue</p><a href="index.html">Sobre mim</a><a href="formacao.html">Formação</a><a href="portfolio.html">Portfólio</a><a href="contato.html">Contato</a></nav>
+      <div class="footer-links"><p>Conecte-se</p><a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <div class="shell footer-bottom"><small>© <span data-current-year>2026</span> Luiz Moutinho</small><small>Feito com HTML, CSS e JavaScript.</small></div>
+  </footer>
+</body>
 </html>

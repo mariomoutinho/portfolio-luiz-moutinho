@@ -1,8 +1,10 @@
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
 node_modules/
 dist/
-coverage/
-.env
-*.local
 *.tsbuildinfo
 vite.config.js
 vite.config.d.ts
+node_modules
