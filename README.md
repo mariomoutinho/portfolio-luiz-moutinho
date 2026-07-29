@@ -1,6 +1,6 @@
-# Portfólio — Luiz Moutinho
+# Portfólio — Luiz Mário Barros Moutinho
 
-Currículo online responsivo desenvolvido para a atividade de Fundamentos da Programação Web da UNINTER. O conteúdo apresenta a trajetória de Luiz Moutinho entre saúde, movimento humano e desenvolvimento de software, além de formação e projetos reais.
+Currículo online responsivo desenvolvido para a atividade de Fundamentos da Programação Web da UNINTER. O conteúdo apresenta a trajetória de Luiz Mário Barros Moutinho entre saúde, movimento humano e desenvolvimento de software, além de formação e projetos reais.
 
 ## Tecnologias
 
