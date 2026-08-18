@@ -198,6 +198,7 @@ em { color: var(--teal-bright); font-weight: 400; }
 .project-detail h3 { margin-bottom: .3rem; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
 .project-detail p { margin-bottom: 1.25rem; opacity: .8; }
 .project-footer { align-items: flex-end; flex-wrap: wrap; padding-top: 1.5rem; border-top: 1px solid currentColor; }
+.project-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .65rem 1rem; }
 .project-link { font-weight: 900; white-space: nowrap; }
 .process { display: grid; gap: 2rem; padding-block: 5rem; }
 .process ol { padding: 0; list-style: none; }
