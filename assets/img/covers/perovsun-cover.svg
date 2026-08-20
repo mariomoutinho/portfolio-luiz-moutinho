@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#000000" flood-opacity=".16"/></filter>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#D98258" stop-opacity=".22"/><stop offset="1" stop-color="#D98258" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1200" height="750" rx="46" fill="#E8C5A9"/>
+  <circle cx="1020" cy="80" r="260" fill="url(#glow)"/>
+  <path d="M48 640C260 510 330 710 560 580s350 80 592-45" fill="none" stroke="#0B2128" stroke-opacity=".09" stroke-width="2"/>
+  <rect x="86" y="88" width="1028" height="574" rx="34" fill="#FBF9F4" stroke="#0B2128" stroke-opacity=".18" filter="url(#shadow)"/>
+  <g fill="none" stroke="#0B2128" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="370" cy="327" r="118" stroke="#D98258" stroke-width="18"/>
+      <path d="M370 154v-48m-122 99-36-36m-15 158h-53m402 0h-53m-1-122 36-36" stroke="#D98258"/>
+      <path d="M560 232h454l-52 292H612Z"/>
+      <path d="M584 329h412M568 426h412M711 232l-36 292m179-292-36 292" stroke-opacity=".35"/>
+      <path d="m730 279 61 35 61-35 61 35v71l-61 35-61-35-61 35-61-35v-71Z" stroke="#176B68"/>
+    </g>
+  <circle cx="1058" cy="142" r="10" fill="#D98258"/>
+  <circle cx="1028" cy="142" r="10" fill="#0B2128" fill-opacity=".2"/>
+  <circle cx="998" cy="142" r="10" fill="#0B2128" fill-opacity=".2"/>
+</svg>

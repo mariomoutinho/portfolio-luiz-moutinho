@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estudo de caso do OrderFlow: decisões de produto, integração Angular e .NET, domínio e testes.">
+  <title>OrderFlow — estudo de caso | Luiz Moutinho</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}</script>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../index.html" aria-label="Luiz Moutinho — página inicial"><span class="brand-mark" aria-hidden="true">LM</span><span>Luiz Moutinho<small>desenvolvimento em curso</small></span></a><div class="header-actions"><button class="theme-toggle" type="button" aria-label="Ativar tema escuro"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Tema</span></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span aria-hidden="true"></span><span class="sr-only">Abrir menu</span></button></div><nav id="menu-principal" class="site-nav" aria-label="Navegação principal"><a href="../index.html">Sobre mim</a><a href="../formacao.html">Formação</a><a href="../portfolio.html" aria-current="page">Portfólio</a><a href="../contato.html">Contato</a></nav></div></header>
+
+  <main id="conteudo" class="case-main">
+    <section class="case-hero shell">
+      <a class="back-link" href="../portfolio.html#projeto-orderflow"><span aria-hidden="true">←</span> Voltar ao portfólio</a>
+      <div class="case-hero-grid">
+        <div class="case-hero-copy"><p class="eyebrow"><span></span> Estudo de caso · Engenharia e domínio</p><h1>OrderFlow</h1><p class="case-intro">Um MVP de gerenciamento de pedidos criado para praticar a cadeia completa entre interface, contratos HTTP, regras de domínio, persistência e testes.</p><dl class="case-facts"><div><dt>Contexto</dt><dd>Projeto pessoal de estudo</dd></div><div><dt>Perspectivas</dt><dd>Produto e engenharia</dd></div><div><dt>Front-end</dt><dd>Angular 22 e TypeScript</dd></div><div><dt>Backend</dt><dd>.NET 8 e C#</dd></div></dl></div>
+        <div class="case-hero-visual"><img src="../assets/img/covers/orderflow-cover.svg" width="1200" height="750" alt="Composição editorial do OrderFlow com três cartões de pedido conectados em sequência" decoding="async"></div>
+      </div>
+    </section>
+
+    <section class="case-content shell">
+      <div class="case-layout">
+        <nav class="case-nav" aria-label="Nesta página"><p>Neste caso</p><a href="#visao-geral">Visão geral</a><a href="#decisoes">Decisões</a><a href="#solucao">Solução</a><a href="#experiencia">Experiência</a><a href="#testes">Testes</a><a href="#aprendizados">Aprendizados</a></nav>
+        <article class="case-article">
+          <section id="visao-geral" class="case-section reveal"><p class="section-index">01 — Visão geral</p><h2>Do pedido ao acompanhamento de status</h2><p>O desafio era construir uma pequena aplicação de e-commerce sem isolar front-end e backend como exercícios desconectados. O fluxo precisava criar pedidos, consultar a lista persistida e atualizar o status com contratos consistentes de ponta a ponta.</p><div class="case-callout"><h3>Objetivo</h3><p>Praticar uma cadeia completa entre interface e API, incluindo validação, persistência local e testes automatizados.</p></div></section>
+
+          <section id="decisoes" class="case-section reveal"><p class="section-index">02 — Produto e domínio</p><h2>Um escopo pequeno, mas completo</h2><p>O MVP concentra o uso em duas ações principais: cadastrar um pedido e acompanhar sua evolução. A decisão de trabalhar com quatro estados — pendente, em processamento, enviado e cancelado — tornou explícita a linguagem do domínio em toda a aplicação.</p><ul><li>Cadastro com nome do cliente e valor total.</li><li>Listagem abastecida pela API, sem pedidos fixos no front-end.</li><li>Atualização de status preservando o estado anterior quando a requisição falha.</li><li>Autenticação, paginação, busca e exclusão ficaram fora do escopo documentado.</li></ul></section>
+
+          <section id="solucao" class="case-section reveal"><p class="section-index">03 — Solução desenvolvida</p><h2>Interface, serviço e persistência alinhados</h2><p>O front-end usa componentes standalone, formulários reativos e um serviço que centraliza as chamadas HTTP. No backend, uma Minimal API direciona as requisições para regras de serviço e um repositório com persistência JSON.</p><h3>Fluxo técnico</h3><ol><li>O formulário Angular valida os dados do pedido.</li><li>O serviço envia a requisição ao endpoint correspondente.</li><li>A camada de domínio valida e cria ou atualiza o pedido.</li><li>O repositório grava os dados e a interface recebe a resposta.</li><li>A tela atualiza o conteúdo e apresenta feedback.</li></ol><h3>Tecnologias</h3><p>C#, .NET 8, ASP.NET Core Minimal API, Angular 22, TypeScript, Reactive Forms, Angular Material, SCSS, JSON, xUnit e Vitest.</p></section>
+
+          <section id="experiencia" class="case-section reveal"><p class="section-index">04 — UX/UI e responsividade</p><h2>Estados claros para uma operação cotidiana</h2><p>A interface organiza formulário e listagem na mesma página. Em telas menores, os pedidos permanecem em cards sem rolagem horizontal. A aplicação diferencia carregamento, lista vazia e erro com nova tentativa, além de usar mensagens de feedback após criação ou atualização.</p><p>Rótulos de status ficam centralizados no modelo TypeScript, reduzindo divergências entre os dados da API e o texto exibido. Campos, botões, seletores e indicadores usam componentes Material, enquanto o layout responsivo permanece nos estilos locais.</p></section>
+
+          <section id="testes" class="case-section reveal"><p class="section-index">05 — Testes existentes</p><h2>Contratos verificados nos dois lados</h2><p>A suíte do backend usa xUnit para regras do serviço, incluindo criação com status inicial e rejeição de status inválido. No front-end, os testes verificam requisições GET, POST e PATCH com <code>HttpTestingController</code> e confirmam que um formulário inválido não tenta criar um pedido.</p><p>A persistência em arquivo usa escrita temporária e bloqueio local para reduzir o risco de corrupção. Ainda não há testes de integração dos endpoints documentados.</p></section>
+
+          <section id="aprendizados" class="case-section reveal"><p class="section-index">06 — Aprendizados e próximos passos</p><h2>Limites que orientam a evolução</h2><p>O JSON atende ao objetivo de estudo em uma única instância, mas não substitui um banco relacional em um cenário de produção. Uma próxima etapa coerente seria adotar persistência relacional e testes de integração, mantendo as regras de domínio já separadas.</p><p>A demonstração publicada usa um adaptador PHP compatível com os mesmos contratos porque a hospedagem compartilhada não executa processos .NET. A implementação principal do repositório permanece em ASP.NET Core.</p><div class="case-links"><a class="button button-primary" href="https://coletivopindorama.com.br/orderflow/" target="_blank" rel="noopener noreferrer">Abrir demonstração <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://github.com/mariomoutinho/orderflow-dotnet-api" target="_blank" rel="noopener noreferrer">Ver no GitHub <span aria-hidden="true">↗</span></a></div></section>
+        </article>
+      </div>
+      <div class="case-next"><div><p class="section-index">Próximo estudo de caso</p><h2>Suinda</h2></div><a class="button button-secondary" href="suinda.html">Conhecer o projeto <span aria-hidden="true">→</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-grid"><div><a class="footer-brand" href="../index.html">Luiz Moutinho</a><p>Saúde, movimento e tecnologia em uma trajetória de aprendizado contínuo.</p></div><nav aria-label="Navegação do rodapé"><p>Navegue</p><a href="../index.html">Sobre mim</a><a href="../formacao.html">Formação</a><a href="../portfolio.html">Portfólio</a><a href="../contato.html">Contato</a></nav><div class="footer-links"><p>Conecte-se</p><a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><div class="shell footer-bottom"><small>© <span data-current-year>2026</span> Luiz Moutinho</small><small>Feito com HTML, CSS e JavaScript.</small></div></footer>
+</body>
+</html>

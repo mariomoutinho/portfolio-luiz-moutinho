@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estudo de caso do Suinda: produto web e mobile para flashcards, sessões de estudo e acompanhamento de progresso.">
+  <title>Suinda — estudo de caso | Luiz Moutinho</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}</script>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../index.html" aria-label="Luiz Moutinho — página inicial"><span class="brand-mark" aria-hidden="true">LM</span><span>Luiz Moutinho<small>desenvolvimento em curso</small></span></a><div class="header-actions"><button class="theme-toggle" type="button" aria-label="Ativar tema escuro"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Tema</span></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span aria-hidden="true"></span><span class="sr-only">Abrir menu</span></button></div><nav id="menu-principal" class="site-nav" aria-label="Navegação principal"><a href="../index.html">Sobre mim</a><a href="../formacao.html">Formação</a><a href="../portfolio.html" aria-current="page">Portfólio</a><a href="../contato.html">Contato</a></nav></div></header>
+
+  <main id="conteudo" class="case-main">
+    <section class="case-hero shell">
+      <a class="back-link" href="../portfolio.html#projeto-suinda"><span aria-hidden="true">←</span> Voltar ao portfólio</a>
+      <div class="case-hero-grid">
+        <div class="case-hero-copy"><p class="eyebrow"><span></span> Estudo de caso · Produto web e mobile</p><h1>Suinda</h1><p class="case-intro">Um aplicativo de estudos que reúne criação e importação de baralhos, sessões com flashcards, histórico e acompanhamento de progresso.</p><dl class="case-facts"><div><dt>Contexto</dt><dd>Aplicativo de estudos</dd></div><div><dt>Perspectivas</dt><dd>Produto, UX/UI e engenharia</dd></div><div><dt>Interface</dt><dd>HTML, CSS e JavaScript</dd></div><div><dt>Plataformas</dt><dd>Web e Android com Capacitor</dd></div></dl></div>
+        <div class="case-hero-visual"><img src="../assets/img/covers/suinda-cover.svg" width="1200" height="750" alt="Composição editorial do Suinda com cartões de estudo e indicador circular de progresso" decoding="async"></div>
+      </div>
+    </section>
+
+    <section class="case-content shell">
+      <div class="case-layout">
+        <nav class="case-nav" aria-label="Nesta página"><p>Neste caso</p><a href="#visao-geral">Visão geral</a><a href="#produto">Produto</a><a href="#experiencia">Experiência</a><a href="#arquitetura">Arquitetura</a><a href="#validacao">Validação</a><a href="#aprendizados">Aprendizados</a></nav>
+        <article class="case-article">
+          <section id="visao-geral" class="case-section reveal"><p class="section-index">01 — Visão geral</p><h2>Um fluxo de estudo em várias etapas</h2><p>O desafio era reunir criação de conteúdo, sessões de estudo, importação e acompanhamento de progresso em uma experiência útil tanto no navegador quanto no celular.</p><div class="case-callout"><h3>Objetivo</h3><p>Organizar baralhos e cartões em um produto que permita preparar o material, estudar e consultar o histórico sem separar essas atividades em ferramentas diferentes.</p></div></section>
+
+          <section id="produto" class="case-section reveal"><p class="section-index">02 — Decisões de produto</p><h2>Conteúdo, estudo e progresso conectados</h2><p>A estrutura do Suinda se apoia em entidades compreensíveis para quem estuda: baralhos, cartões, sessões e progresso. O produto também diferencia recursos de estudante e administração.</p><ul><li>Criação de baralhos e cartões.</li><li>Importação de conteúdo, inclusive pacotes APKG.</li><li>Cartões com texto, imagem, áudio e oclusão, conforme os campos presentes no projeto.</li><li>Histórico de sessões, estatísticas diárias e progresso por cartão.</li><li>Autenticação para acesso às rotas da API.</li></ul></section>
+
+          <section id="experiencia" class="case-section reveal"><p class="section-index">03 — UX/UI</p><h2>Interface orientada à tarefa atual</h2><p>As páginas separam momentos de uso como entrada, início, baralhos, estudo, resultado, progresso e navegação de cartões. Isso reduz a quantidade de decisões simultâneas durante uma sessão.</p><p>A interface possui variações responsivas documentadas no CSS, menus com nomes acessíveis, rótulos para filtros e controles de estudo, além de ações como desfazer e ouvir a pergunta. Esses elementos demonstram atenção ao uso por toque e à identificação dos controles, sem substituir uma auditoria formal de acessibilidade.</p></section>
+
+          <section id="arquitetura" class="case-section reveal"><p class="section-index">04 — Solução desenvolvida</p><h2>Uma base web empacotada para Android</h2><p>A pasta <code>www</code> contém a interface compartilhada pelo navegador e pelo Capacitor. A API usa PHP com PDO e SQLite por padrão, com esquema disponível para migração a MySQL ou MariaDB.</p><h3>Responsabilidades principais</h3><ul><li>O front-end organiza telas, estado da sessão e chamadas à API.</li><li>A API oferece autenticação, baralhos, cartões, importação, histórico, estatísticas e progresso.</li><li>O projeto Android é gerado pelo Capacitor a partir da interface web.</li><li>A persistência local padrão facilita a execução do projeto em desenvolvimento.</li></ul></section>
+
+          <section id="validacao" class="case-section reveal"><p class="section-index">05 — Validação existente</p><h2>Evidências e limites atuais</h2><p>O repositório documenta execução local separada para interface e API, usuários de teste e os endpoints disponíveis. A estrutura de páginas e a camada de dados permitem conferir os fluxos manualmente no navegador e no aplicativo.</p><p>Não há suíte automatizada de testes documentada no projeto consultado. Testes de integração da API, auditoria de acessibilidade e validação sistemática em dispositivos são próximos passos reais, não resultados já alcançados.</p></section>
+
+          <section id="aprendizados" class="case-section reveal"><p class="section-index">06 — Aprendizados e próximos passos</p><h2>Um produto que cresce por fluxos</h2><p>O projeto mostra como uma base web pode atender navegador e aplicativo móvel, mas também evidencia o custo de manter muitos estados de estudo e importação coerentes. Consolidar testes dos fluxos principais e revisar acessibilidade página a página são evoluções prioritárias.</p><div class="case-links"><a class="button button-primary" href="https://www.coletivopindorama.com.br/suinda/" target="_blank" rel="noopener noreferrer">Abrir projeto <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://github.com/mariomoutinho/suinda-app" target="_blank" rel="noopener noreferrer">Ver no GitHub <span aria-hidden="true">↗</span></a></div></section>
+        </article>
+      </div>
+      <div class="case-next"><div><p class="section-index">Próximo estudo de caso</p><h2>7 Invernos</h2></div><a class="button button-secondary" href="7-invernos.html">Conhecer o projeto <span aria-hidden="true">→</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-grid"><div><a class="footer-brand" href="../index.html">Luiz Moutinho</a><p>Saúde, movimento e tecnologia em uma trajetória de aprendizado contínuo.</p></div><nav aria-label="Navegação do rodapé"><p>Navegue</p><a href="../index.html">Sobre mim</a><a href="../formacao.html">Formação</a><a href="../portfolio.html">Portfólio</a><a href="../contato.html">Contato</a></nav><div class="footer-links"><p>Conecte-se</p><a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><div class="shell footer-bottom"><small>© <span data-current-year>2026</span> Luiz Moutinho</small><small>Feito com HTML, CSS e JavaScript.</small></div></footer>
+</body>
+</html>

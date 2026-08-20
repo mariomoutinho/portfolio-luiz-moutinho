@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Estudo de caso da 7 Invernos: landing page comercial responsiva, acessível e orientada ao contato.">
+  <title>7 Invernos — estudo de caso | Luiz Moutinho</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}</script>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header"><div class="shell header-inner"><a class="brand" href="../index.html" aria-label="Luiz Moutinho — página inicial"><span class="brand-mark" aria-hidden="true">LM</span><span>Luiz Moutinho<small>desenvolvimento em curso</small></span></a><div class="header-actions"><button class="theme-toggle" type="button" aria-label="Ativar tema escuro"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Tema</span></button><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal"><span aria-hidden="true"></span><span class="sr-only">Abrir menu</span></button></div><nav id="menu-principal" class="site-nav" aria-label="Navegação principal"><a href="../index.html">Sobre mim</a><a href="../formacao.html">Formação</a><a href="../portfolio.html" aria-current="page">Portfólio</a><a href="../contato.html">Contato</a></nav></div></header>
+
+  <main id="conteudo" class="case-main">
+    <section class="case-hero shell">
+      <a class="back-link" href="../portfolio.html#projeto-7-invernos"><span aria-hidden="true">←</span> Voltar ao portfólio</a>
+      <div class="case-hero-grid">
+        <div class="case-hero-copy"><p class="eyebrow"><span></span> Estudo de caso · Interface comercial</p><h1>7 Invernos</h1><p class="case-intro">Uma landing page de página única para apresentar a marca, explicar o atendimento e encaminhar visitantes aos canais comerciais.</p><dl class="case-facts"><div><dt>Contexto</dt><dd>Projeto comercial</dd></div><div><dt>Perspectivas</dt><dd>Produto e UX/UI</dd></div><div><dt>Arquitetura</dt><dd>Site estático</dd></div><div><dt>Stack</dt><dd>HTML, CSS e JavaScript</dd></div></dl></div>
+        <div class="case-hero-visual"><img src="../assets/img/covers/7-invernos-cover.svg" width="1200" height="750" alt="Composição editorial da 7 Invernos com seleção de casacos em uma interface responsiva" decoding="async"></div>
+      </div>
+    </section>
+
+    <section class="case-content shell">
+      <div class="case-layout">
+        <nav class="case-nav" aria-label="Nesta página"><p>Neste caso</p><a href="#visao-geral">Visão geral</a><a href="#produto">Produto</a><a href="#interface">Interface</a><a href="#acessibilidade">Acessibilidade</a><a href="#performance">Performance</a><a href="#aprendizados">Aprendizados</a></nav>
+        <article class="case-article">
+          <section id="visao-geral" class="case-section reveal"><p class="section-index">01 — Visão geral</p><h2>Uma presença digital com escopo definido</h2><p>O desafio era organizar a presença da 7 Invernos com boa leitura em celular, navegação simples e caminhos comerciais configuráveis. O escopo documentado é deliberadamente enxuto: uma landing page, não uma loja virtual, catálogo ou sistema de reservas.</p><div class="case-callout"><h3>Objetivo</h3><p>Apresentar roupas e orientação para viagens ao frio, explicar como funciona o atendimento e conduzir a pessoa ao canal de contato adequado.</p></div></section>
+
+          <section id="produto" class="case-section reveal"><p class="section-index">02 — Decisões de produto</p><h2>Priorizar descoberta e contato</h2><p>A página organiza conteúdo institucional, inspirações de looks, orientação para viagem e localização em uma sequência única. A busca consulta somente o conteúdo da página, sem sugerir um catálogo que o projeto não oferece.</p><ul><li>Links comerciais ficam centralizados em um arquivo de configuração.</li><li>Marcadores pendentes bloqueiam destinos inválidos e apresentam aviso.</li><li>Dados como endereço, WhatsApp e Instagram não foram inventados.</li><li>Recursos de e-commerce, pagamentos, reservas e painel administrativo ficaram fora do escopo.</li></ul></section>
+
+          <section id="interface" class="case-section reveal"><p class="section-index">03 — UX/UI e conversão</p><h2>Conteúdo visual com ações reconhecíveis</h2><p>A identidade da marca se mantém presente na navegação fixa e nas fotografias. A página combina apresentação, carrosséis, busca local e chamadas para contato sem depender de bibliotecas externas.</p><p>Em telas menores, menu, galerias e blocos de conteúdo se reorganizam com CSS mobile-first. Os canais sociais permanecem acessíveis em uma área flutuante, enquanto os destinos ainda não confirmados são tratados como pendência explícita.</p></section>
+
+          <section id="acessibilidade" class="case-section reveal"><p class="section-index">04 — Acessibilidade</p><h2>Controles com nome e movimento controlável</h2><p>Menu, busca, carrosséis e botões possuem nomes acessíveis e estados expostos por atributos nativos e ARIA. Os carrosséis podem ser operados por controles e teclado, e a busca usa um diálogo com retorno de foco.</p><p>As animações contínuas podem ser pausadas e são interrompidas quando o sistema solicita movimento reduzido. Cópias visuais usadas nos loops ficam ocultas de tecnologias assistivas.</p></section>
+
+          <section id="performance" class="case-section reveal"><p class="section-index">05 — Performance e validação</p><h2>Uma base estática e leve</h2><p>O projeto não possui frameworks, fontes externas obrigatórias ou etapa de build. As fotografias originais foram preservadas, enquanto a interface carrega versões WebP menores com dimensões declaradas.</p><p>O repositório documenta testes manuais antes da publicação, incluindo substituição dos dados comerciais e revisão dos links em celular e computador. Não há suíte automatizada de testes documentada.</p></section>
+
+          <section id="aprendizados" class="case-section reveal"><p class="section-index">06 — Aprendizados e próximos passos</p><h2>Clareza também significa reconhecer pendências</h2><p>O projeto reforça que uma interface comercial não deve simular informações ausentes. Antes de uma publicação definitiva, ainda é necessário confirmar WhatsApp, Instagram, endereço e localização com a equipe da marca.</p><p>Uma revisão com conteúdo comercial final e testes nos dispositivos do público é o próximo passo mais importante. Recursos maiores só devem ser considerados se o escopo do negócio realmente mudar.</p><div class="case-links"><a class="button button-primary" href="https://mariomoutinho.github.io/7-invernos/" target="_blank" rel="noopener noreferrer">Abrir projeto <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://github.com/mariomoutinho/7-invernos" target="_blank" rel="noopener noreferrer">Ver no GitHub <span aria-hidden="true">↗</span></a></div></section>
+        </article>
+      </div>
+      <div class="case-next"><div><p class="section-index">Continuar explorando</p><h2>Todos os projetos</h2></div><a class="button button-secondary" href="../portfolio.html#projetos">Voltar à vitrine <span aria-hidden="true">→</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-grid"><div><a class="footer-brand" href="../index.html">Luiz Moutinho</a><p>Saúde, movimento e tecnologia em uma trajetória de aprendizado contínuo.</p></div><nav aria-label="Navegação do rodapé"><p>Navegue</p><a href="../index.html">Sobre mim</a><a href="../formacao.html">Formação</a><a href="../portfolio.html">Portfólio</a><a href="../contato.html">Contato</a></nav><div class="footer-links"><p>Conecte-se</p><a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><div class="shell footer-bottom"><small>© <span data-current-year>2026</span> Luiz Moutinho</small><small>Feito com HTML, CSS e JavaScript.</small></div></footer>
+</body>
+</html>

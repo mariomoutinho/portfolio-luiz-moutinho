@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#000000" flood-opacity=".16"/></filter>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#D98258" stop-opacity=".22"/><stop offset="1" stop-color="#D98258" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1200" height="750" rx="46" fill="#176B68"/>
+  <circle cx="1020" cy="80" r="260" fill="url(#glow)"/>
+  <path d="M48 640C260 510 330 710 560 580s350 80 592-45" fill="none" stroke="#F4F0E7" stroke-opacity=".09" stroke-width="2"/>
+  <rect x="86" y="88" width="1028" height="574" rx="34" fill="#1B7773" stroke="#F4F0E7" stroke-opacity=".18" filter="url(#shadow)"/>
+  <g fill="none" stroke="#F4F0E7" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m169 319 212-164 212 164"/>
+      <path d="M223 277v277h316V277"/>
+      <path d="M337 554V413h88v141"/>
+      <rect x="664" y="182" width="362" height="372" rx="30"/>
+      <path d="M720 248h154M720 303h247M720 402h247M720 458h190" stroke-opacity=".45"/>
+      <circle cx="951" cy="248" r="30" fill="#D98258" stroke="none"/>
+      <path d="m934 248 12 12 24-28" stroke="#0B2128"/>
+      <rect x="720" y="345" width="74" height="18" rx="9" fill="#F4F0E7" stroke="none"/>
+      <rect x="720" y="345" width="54" height="18" rx="9" fill="#D98258" stroke="none"/>
+    </g>
+  <circle cx="1058" cy="142" r="10" fill="#D98258"/>
+  <circle cx="1028" cy="142" r="10" fill="#F4F0E7" fill-opacity=".2"/>
+  <circle cx="998" cy="142" r="10" fill="#F4F0E7" fill-opacity=".2"/>
+</svg>

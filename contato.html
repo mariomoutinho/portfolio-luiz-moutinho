@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Entre em contato com Luiz Moutinho por e-mail, telefone, LinkedIn ou pelo formulário demonstrativo.">
+  <meta name="description" content="Entre em contato com Luiz Moutinho por e-mail, telefone, LinkedIn, GitHub ou prepare uma mensagem no seu aplicativo de e-mail.">
   <title>Contato | Luiz Moutinho</title>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}</script>
@@ -29,12 +29,12 @@
         </address>
       </div>
       <div class="form-panel">
-        <div><p class="eyebrow eyebrow-light"><span></span> Envie uma mensagem</p><h2>Escreva para mim</h2><p>Este formulário é uma demonstração acadêmica e não transmite dados pela internet.</p></div>
-        <form id="contact-form" novalidate>
+        <div><p class="eyebrow eyebrow-light"><span></span> Prepare uma mensagem</p><h2>Escreva para mim</h2><p id="form-explanation">Ao continuar, seu aplicativo de e-mail será aberto com a mensagem preenchida. Revise o conteúdo e confirme o envio por lá.</p></div>
+        <form id="contact-form" aria-describedby="form-explanation" novalidate>
           <div class="field"><label for="nome">Nome <span aria-hidden="true">*</span></label><input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="erro-nome" required><p class="field-error" id="erro-nome"></p></div>
           <div class="field"><label for="email">E-mail <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="erro-email" required><p class="field-error" id="erro-email"></p></div>
           <div class="field"><label for="mensagem">Mensagem <span aria-hidden="true">*</span></label><textarea id="mensagem" name="mensagem" rows="6" aria-describedby="erro-mensagem contador-mensagem" required></textarea><div class="field-meta"><p class="field-error" id="erro-mensagem"></p><span id="contador-mensagem">0 caracteres</span></div></div>
-          <button class="button submit-button" type="submit">Simular envio <span aria-hidden="true">→</span></button>
+          <button class="button submit-button" type="submit">Preparar e-mail <span aria-hidden="true">→</span></button>
           <div id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1"></div>
         </form>
       </div>

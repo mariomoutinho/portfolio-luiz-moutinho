@@ -18,12 +18,19 @@ Não há frameworks, bibliotecas, recursos por CDN, dependências npm ou etapa d
 ├── formacao.html
 ├── portfolio.html
 ├── contato.html
+├── cases/
+│   ├── orderflow.html
+│   ├── suinda.html
+│   └── 7-invernos.html
 ├── assets/
 │   ├── css/
 │   │   └── styles.css
 │   ├── js/
 │   │   └── main.js
 │   └── img/
+│       ├── covers/
+│       ├── decorative/
+│       └── icons/
 ├── README.md
 └── .gitignore
 ```
@@ -40,15 +47,16 @@ Abra `http://localhost:8000`. O site também permanece legível ao abrir os arqu
 
 ## Recursos
 
-- Quatro páginas independentes com navegação consistente
+- Páginas independentes com navegação consistente e três estudos de caso
 - Página atual indicada visualmente e por `aria-current`
 - Menu móvel operável por botão e tecla Escape
 - Tema inicial alinhado ao sistema, com preferência persistida
-- Formulário demonstrativo com erros em texto, foco no primeiro campo inválido e confirmação acessível
+- Vitrine filtrável com carrossel manual em CSS scroll-snap e grade responsiva
+- Formulário que valida os campos e prepara um `mailto:`, sem simular envio
 - Contraste, foco visível e suporte a `prefers-reduced-motion`
 - Caminhos relativos compatíveis com páginas de projeto no GitHub Pages
 
-O formulário não envia dados nem faz requisições de rede.
+O formulário não envia dados nem faz requisições de rede. Depois da validação, ele abre o aplicativo de e-mail com assunto e corpo preenchidos para que a pessoa revise e confirme o envio.
 
 ## Publicação no GitHub Pages
 
