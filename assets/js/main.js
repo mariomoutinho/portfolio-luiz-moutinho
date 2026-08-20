@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupTheme();
   setupMobileMenu();
   setupProjectShowcase();
-  setupImageFallbacks();
-  setupRevealAnimations();
   setupContactForm();
 
   document.querySelectorAll("[data-current-year]").forEach((element) => {
@@ -107,6 +105,10 @@ function setupProjectShowcase() {
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => applyFilter(button.dataset.projectFilter || "all"));
+  });
+
+  document.querySelectorAll("[data-project-nav]").forEach((link) => {
+    link.addEventListener("click", () => applyFilter("all"));
   });
 }
 
@@ -211,44 +213,6 @@ function setupProjectCarousel(carousel) {
 
   setActive(activeSlide);
   return { refresh };
-}
-
-/* Fallback editorial apenas para falhas reais de carregamento; os assets originais permanecem intactos. */
-function setupImageFallbacks() {
-  document.querySelectorAll(".project-media img, .case-hero-visual img").forEach((image) => {
-    const showFallback = () => {
-      const container = image.parentElement;
-      if (!container || container.classList.contains("has-missing-image")) return;
-      const fallback = document.createElement("span");
-      fallback.className = "media-fallback";
-      fallback.setAttribute("role", "img");
-      fallback.setAttribute("aria-label", image.alt || "Recurso visual do projeto indisponível");
-      fallback.textContent = "Visual do projeto";
-      image.hidden = true;
-      container.classList.add("has-missing-image");
-      container.append(fallback);
-    };
-
-    image.addEventListener("error", showFallback);
-    if (image.complete && image.naturalWidth === 0) showFallback();
-  });
-}
-
-/* Entrada discreta ativada só quando o navegador oferece suporte e não há movimento reduzido. */
-function setupRevealAnimations() {
-  const elements = Array.from(document.querySelectorAll(".reveal"));
-  if (!elements.length || !("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  document.documentElement.classList.add("reveal-ready");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    });
-  }, { rootMargin: "0px 0px -8%", threshold: .08 });
-
-  elements.forEach((element) => observer.observe(element));
 }
 
 /* Validação progressiva e preparação honesta de e-mail, sem confirmar um envio externo. */
