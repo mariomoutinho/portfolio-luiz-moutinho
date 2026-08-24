@@ -235,6 +235,7 @@ function setupBootstrapProjectCarousel(carousel) {
       touch: true,
       wrap: true
     });
+    if (!isPaused && visibleSlides.length > 1) instance.cycle();
     carousel.removeEventListener("mouseleave", syncPlaybackAfterHover);
     carousel.addEventListener("mouseleave", syncPlaybackAfterHover);
   };
