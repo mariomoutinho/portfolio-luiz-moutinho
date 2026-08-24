@@ -65,31 +65,39 @@ function setupMobileMenu() {
   });
 }
 
-/* Filtros e carrossel manual da vitrine, mantendo todo o conteúdo disponível sem JavaScript. */
+/* Filtros da vitrine e integração do único carrossel com o Bootstrap. */
 function setupProjectShowcase() {
   const projects = Array.from(document.querySelectorAll("[data-project]"));
   const filterButtons = Array.from(document.querySelectorAll("[data-project-filter]"));
   if (!projects.length || !filterButtons.length) return;
 
   const sections = Array.from(document.querySelectorAll("[data-project-section]"));
+  const sectionProjects = sections.map((section) => ({
+    element: section,
+    projects: projects.filter((project) => section.contains(project))
+  }));
   const status = document.querySelector("#filter-status");
-  const carouselControllers = Array.from(document.querySelectorAll("[data-project-carousel]"))
-    .map(setupProjectCarousel)
-    .filter(Boolean);
+  const carouselElement = document.querySelector("[data-project-carousel]");
+  const carouselController = carouselElement ? setupBootstrapProjectCarousel(carouselElement) : null;
+
+  const matchesFilter = (project, filter) => {
+    const categories = project.dataset.category?.split(/\s+/).filter(Boolean) || [];
+    return filter === "all" || categories.includes(filter);
+  };
 
   const applyFilter = (filter) => {
     let resultCount = 0;
 
     projects.forEach((project) => {
-      const categories = project.dataset.category?.split(/\s+/).filter(Boolean) || [];
-      const matches = filter === "all" || categories.includes(filter);
-      project.hidden = !matches;
+      const matches = matchesFilter(project, filter);
+      if (!project.classList.contains("carousel-item")) project.hidden = !matches;
       if (matches) resultCount += 1;
     });
 
-    sections.forEach((section) => {
-      const sectionProjects = Array.from(section.querySelectorAll("[data-project]"));
-      section.hidden = sectionProjects.every((project) => project.hidden);
+    carouselController?.filter(filter);
+
+    sectionProjects.forEach(({ element, projects: projectsInSection }) => {
+      element.hidden = projectsInSection.every((project) => !matchesFilter(project, filter));
     });
 
     filterButtons.forEach((button) => {
@@ -99,8 +107,6 @@ function setupProjectShowcase() {
     if (status) {
       status.textContent = resultCount === 1 ? "1 projeto encontrado." : `${resultCount} projetos encontrados.`;
     }
-
-    carouselControllers.forEach((controller) => controller.refresh());
   };
 
   filterButtons.forEach((button) => {
@@ -108,111 +114,149 @@ function setupProjectShowcase() {
   });
 
   document.querySelectorAll("[data-project-nav]").forEach((link) => {
-    link.addEventListener("click", () => applyFilter("all"));
+    link.addEventListener("click", (event) => {
+      applyFilter("all");
+      const projectId = link.hash.slice(1);
+      if (!carouselController?.contains(projectId)) return;
+
+      event.preventDefault();
+      carouselController.showProject(projectId);
+      carouselElement.scrollIntoView({
+        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start"
+      });
+      history.pushState(null, "", link.hash);
+    });
   });
 }
 
-function setupProjectCarousel(carousel) {
-  const track = carousel.querySelector("[data-carousel-track]");
-  const allSlides = Array.from(carousel.querySelectorAll("[data-slide-id]"));
-  const previous = carousel.parentElement?.querySelector("[data-carousel-prev]");
-  const next = carousel.parentElement?.querySelector("[data-carousel-next]");
-  const indicators = Array.from(carousel.querySelectorAll("[data-carousel-indicator]"));
-  if (!track || !allSlides.length || !previous || !next) return null;
+function setupBootstrapProjectCarousel(carousel) {
+  const inner = carousel.querySelector(".carousel-inner");
+  const indicators = carousel.querySelector(".carousel-indicators");
+  const section = carousel.closest(".featured-section");
+  const toggle = section?.querySelector("[data-carousel-toggle]");
+  const toggleIcon = toggle?.querySelector("[data-carousel-toggle-icon]");
+  const toggleLabel = toggle?.querySelector("[data-carousel-toggle-label]");
+  const slideControls = Array.from(section?.querySelectorAll("[data-bs-slide]") || []);
+  const originalSlides = inner ? Array.from(inner.querySelectorAll(".carousel-item")) : [];
+  if (!inner || !indicators || !section || !toggle || !originalSlides.length) return null;
 
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  let activeSlide = allSlides[0];
-  let scrollFrame = 0;
+  let isPaused = reduceMotion.matches;
+  let instance = null;
+  let visibleSlides = originalSlides.slice();
 
-  const visibleSlides = () => allSlides.filter((slide) => !slide.hidden);
+  const matchesFilter = (slide, filter) => {
+    const categories = slide.dataset.category?.split(/\s+/).filter(Boolean) || [];
+    return filter === "all" || categories.includes(filter);
+  };
 
-  const setActive = (slide) => {
-    const visible = visibleSlides();
-    if (!slide || !visible.includes(slide)) slide = visible[0];
-    activeSlide = slide || null;
+  const updateToggle = () => {
+    const action = isPaused ? "Retomar carrossel" : "Pausar carrossel";
+    toggle.setAttribute("aria-label", action);
+    toggle.setAttribute("title", action);
+    toggleIcon.textContent = isPaused ? "▶" : "Ⅱ";
+    toggleLabel.textContent = isPaused ? "Retomar" : "Pausar";
+    toggle.disabled = visibleSlides.length < 2;
+  };
 
-    indicators.forEach((indicator) => {
-      const relatedSlide = allSlides.find((item) => item.dataset.slideId === indicator.dataset.carouselIndicator);
-      indicator.hidden = !relatedSlide || relatedSlide.hidden;
-      if (relatedSlide === activeSlide) indicator.setAttribute("aria-current", "true");
-      else indicator.removeAttribute("aria-current");
+  const updateSlideControls = () => {
+    const controlsAreUseful = visibleSlides.length > 1;
+    slideControls.forEach((control) => {
+      control.disabled = !controlsAreUseful;
     });
-
-    const activeIndex = activeSlide ? visible.indexOf(activeSlide) : -1;
-    const controlsAreNeeded = visible.length > 1;
-    previous.hidden = !controlsAreNeeded;
-    next.hidden = !controlsAreNeeded;
-    previous.disabled = activeIndex <= 0;
-    next.disabled = activeIndex < 0 || activeIndex >= visible.length - 1;
+    indicators.hidden = !controlsAreUseful;
   };
 
-  const scrollToSlide = (slide, useMotion = true) => {
-    if (!slide) return;
-    const trackBox = track.getBoundingClientRect();
-    const slideBox = slide.getBoundingClientRect();
-    const targetLeft = track.scrollLeft + slideBox.left - trackBox.left;
-    track.scrollTo({ left: targetLeft, behavior: useMotion && !reduceMotion.matches ? "smooth" : "auto" });
-    setActive(slide);
-  };
-
-  const updateFromScroll = () => {
-    const visible = visibleSlides();
-    if (!visible.length) {
-      setActive(null);
-      return;
+  const disposeInstance = () => {
+    const currentInstance = window.bootstrap?.Carousel?.getInstance(carousel) || instance;
+    if (currentInstance) {
+      const transitioningSlide = carousel.querySelector(".carousel-item-next, .carousel-item-prev");
+      const activeSlide = carousel.querySelector(".carousel-item.active");
+      /* Impede que o callback de uma transição descartada altere o DOM já filtrado. */
+      if (transitioningSlide && activeSlide) {
+        activeSlide.dispatchEvent(new Event("transitionend", { bubbles: true }));
+      }
+      currentInstance.pause();
+      currentInstance.dispose();
     }
-    const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
-    const nearest = visible.reduce((best, slide) => {
-      const box = slide.getBoundingClientRect();
-      const distance = Math.abs(box.left + box.width / 2 - trackCenter);
-      return distance < best.distance ? { slide, distance } : best;
-    }, { slide: visible[0], distance: Number.POSITIVE_INFINITY });
-    setActive(nearest.slide);
+    instance = null;
+    carousel.classList.remove("is-bootstrap-ready");
+    section.classList.remove("carousel-is-ready");
   };
 
-  previous.addEventListener("click", () => {
-    const visible = visibleSlides();
-    scrollToSlide(visible[Math.max(0, visible.indexOf(activeSlide) - 1)]);
-  });
-
-  next.addEventListener("click", () => {
-    const visible = visibleSlides();
-    scrollToSlide(visible[Math.min(visible.length - 1, visible.indexOf(activeSlide) + 1)]);
-  });
-
-  indicators.forEach((indicator) => {
-    indicator.addEventListener("click", () => {
-      scrollToSlide(allSlides.find((slide) => slide.dataset.slideId === indicator.dataset.carouselIndicator));
+  const rebuildIndicators = () => {
+    const buttons = visibleSlides.map((slide, index) => {
+      const button = document.createElement("button");
+      const projectName = slide.querySelector("h3")?.textContent.trim() || `projeto ${index + 1}`;
+      button.type = "button";
+      button.dataset.bsTarget = `#${carousel.id}`;
+      button.dataset.bsSlideTo = String(index);
+      button.setAttribute("aria-label", `Ir para ${projectName}`);
+      if (index === 0) {
+        button.classList.add("active");
+        button.setAttribute("aria-current", "true");
+      }
+      return button;
     });
-  });
-
-  track.addEventListener("keydown", (event) => {
-    if (event.target !== track || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-    event.preventDefault();
-    const visible = visibleSlides();
-    const direction = event.key === "ArrowRight" ? 1 : -1;
-    const nextIndex = Math.min(visible.length - 1, Math.max(0, visible.indexOf(activeSlide) + direction));
-    scrollToSlide(visible[nextIndex]);
-  });
-
-  track.addEventListener("scroll", () => {
-    if (scrollFrame) cancelAnimationFrame(scrollFrame);
-    scrollFrame = requestAnimationFrame(updateFromScroll);
-  }, { passive: true });
-
-  window.addEventListener("resize", () => {
-    if (scrollFrame) cancelAnimationFrame(scrollFrame);
-    scrollFrame = requestAnimationFrame(updateFromScroll);
-  });
-
-  const refresh = () => {
-    const firstVisible = visibleSlides()[0];
-    scrollToSlide(firstVisible, false);
-    requestAnimationFrame(updateFromScroll);
+    indicators.replaceChildren(...buttons);
   };
 
-  setActive(activeSlide);
-  return { refresh };
+  const syncPlaybackAfterHover = () => {
+    queueMicrotask(() => {
+      if (isPaused) instance?.pause();
+      else if (visibleSlides.length > 1) instance?.cycle();
+    });
+  };
+
+  const rebuild = (filter) => {
+    disposeInstance();
+    visibleSlides = originalSlides.filter((slide) => matchesFilter(slide, filter));
+
+    originalSlides.forEach((slide) => {
+      slide.hidden = false;
+      slide.classList.remove("active", "carousel-item-next", "carousel-item-prev", "carousel-item-start", "carousel-item-end");
+    });
+    if (visibleSlides[0]) visibleSlides[0].classList.add("active");
+    inner.replaceChildren(...visibleSlides);
+    rebuildIndicators();
+    updateSlideControls();
+    updateToggle();
+
+    if (!visibleSlides.length || !window.bootstrap?.Carousel) return;
+
+    carousel.classList.add("is-bootstrap-ready");
+    section.classList.add("carousel-is-ready");
+    instance = window.bootstrap.Carousel.getOrCreateInstance(carousel, {
+      interval: 5000,
+      keyboard: true,
+      pause: "hover",
+      ride: !isPaused && visibleSlides.length > 1 ? "carousel" : false,
+      touch: true,
+      wrap: true
+    });
+    carousel.removeEventListener("mouseleave", syncPlaybackAfterHover);
+    carousel.addEventListener("mouseleave", syncPlaybackAfterHover);
+  };
+
+  toggle.addEventListener("click", () => {
+    if (!instance || visibleSlides.length < 2) return;
+    isPaused = !isPaused;
+    if (isPaused) instance.pause();
+    else instance.cycle();
+    updateToggle();
+  });
+
+  rebuild("all");
+
+  return {
+    filter: rebuild,
+    contains: (projectId) => originalSlides.some((slide) => slide.id === projectId),
+    showProject: (projectId) => {
+      const index = visibleSlides.findIndex((slide) => slide.id === projectId);
+      if (index >= 0) instance?.to(index);
+    }
+  };
 }
 
 /* Validação progressiva e preparação honesta de e-mail, sem confirmar um envio externo. */

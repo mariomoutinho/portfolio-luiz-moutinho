@@ -7,7 +7,19 @@
   <title>Portfólio | Luiz Moutinho</title>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}</script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  >
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+    defer
+  ></script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body class="portfolio-page">
@@ -81,15 +93,16 @@
       <section class="featured-section shell" data-project-section aria-labelledby="featured-title">
         <div class="showcase-heading">
           <div><p class="section-index">Em destaque</p><h2 id="featured-title">Três projetos, três pontos de vista</h2></div>
-          <div class="carousel-arrows" aria-label="Controles do carrossel">
-            <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Projeto anterior" disabled><span aria-hidden="true">←</span></button>
-            <button class="carousel-arrow" type="button" data-carousel-next aria-label="Próximo projeto"><span aria-hidden="true">→</span></button>
+          <div class="carousel-controls" aria-label="Controles do carrossel">
+            <button class="carousel-arrow" type="button" data-bs-target="#featured-projects-carousel" data-bs-slide="prev" aria-label="Projeto anterior"><span aria-hidden="true">←</span></button>
+            <button class="carousel-arrow" type="button" data-bs-target="#featured-projects-carousel" data-bs-slide="next" aria-label="Próximo projeto"><span aria-hidden="true">→</span></button>
+            <button class="carousel-play-toggle" type="button" data-carousel-toggle aria-label="Pausar carrossel" title="Pausar carrossel"><span data-carousel-toggle-icon aria-hidden="true">Ⅱ</span><span data-carousel-toggle-label>Pausar</span></button>
           </div>
         </div>
 
-        <div class="project-carousel" data-project-carousel>
-          <div class="carousel-track" data-carousel-track tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque">
-            <article id="projeto-orderflow" class="featured-card" data-project data-category="produto engenharia" data-slide-id="orderflow">
+        <div id="featured-projects-carousel" class="project-carousel carousel slide" data-project-carousel tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque">
+          <div class="carousel-inner">
+            <article id="projeto-orderflow" class="featured-card carousel-item active" data-project data-category="produto engenharia">
               <div class="project-media"><img src="assets/img/covers/orderflow-cover.svg" width="1200" height="750" alt="Composição editorial do OrderFlow com três cartões de pedido conectados em sequência" loading="lazy" decoding="async"></div>
               <div class="featured-card-body">
                 <div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/orderflow.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div>
@@ -100,7 +113,7 @@
               </div>
             </article>
 
-            <article id="projeto-suinda" class="featured-card" data-project data-category="produto ux-ui engenharia" data-slide-id="suinda">
+            <article id="projeto-suinda" class="featured-card carousel-item" data-project data-category="produto ux-ui engenharia">
               <div class="project-media"><img src="assets/img/covers/suinda-cover.svg" width="1200" height="750" alt="Composição editorial do Suinda com cartões de estudo e indicador circular de progresso" loading="lazy" decoding="async"></div>
               <div class="featured-card-body">
                 <div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/suinda.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · UX/UI · Engenharia</p></div>
@@ -111,7 +124,7 @@
               </div>
             </article>
 
-            <article id="projeto-7-invernos" class="featured-card" data-project data-category="produto ux-ui" data-slide-id="7-invernos">
+            <article id="projeto-7-invernos" class="featured-card carousel-item" data-project data-category="produto ux-ui">
               <div class="project-media"><img src="assets/img/covers/7-invernos-cover.svg" width="1200" height="750" alt="Composição editorial da 7 Invernos com seleção de casacos em uma interface responsiva" loading="lazy" decoding="async"></div>
               <div class="featured-card-body">
                 <div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/7-invernos.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · UX/UI</p></div>
@@ -123,10 +136,10 @@
             </article>
           </div>
 
-          <div class="carousel-indicators" data-carousel-indicators aria-label="Escolher projeto em destaque">
-            <button type="button" data-carousel-indicator="orderflow" aria-label="Ir para OrderFlow" aria-current="true"></button>
-            <button type="button" data-carousel-indicator="suinda" aria-label="Ir para Suinda"></button>
-            <button type="button" data-carousel-indicator="7-invernos" aria-label="Ir para 7 Invernos"></button>
+          <div class="carousel-indicators" aria-label="Escolher projeto em destaque">
+            <button class="active" type="button" data-bs-target="#featured-projects-carousel" data-bs-slide-to="0" aria-label="Ir para OrderFlow" aria-current="true"></button>
+            <button type="button" data-bs-target="#featured-projects-carousel" data-bs-slide-to="1" aria-label="Ir para Suinda"></button>
+            <button type="button" data-bs-target="#featured-projects-carousel" data-bs-slide-to="2" aria-label="Ir para 7 Invernos"></button>
           </div>
         </div>
       </section>
