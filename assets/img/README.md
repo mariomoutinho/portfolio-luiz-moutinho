@@ -27,6 +27,7 @@ Há uma capa individual correspondente a cada projeto na pasta `covers/`.
 
 ## Elementos gerais
 
+- `luiz-moutinho-retrato.png` — retrato profissional usado na apresentação da página inicial, 1122 × 1402
 - `decorative/hero-product-ecosystem.svg` — arte principal do portfólio, 1600 × 900
 - `decorative/grid-pattern.svg` — textura repetível, 320 × 320
 
