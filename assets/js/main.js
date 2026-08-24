@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.documentElement.classList.add("js-enabled");
   setupTheme();
   setupMobileMenu();
+  setupProjectMarquee();
   setupProjectShowcase();
   setupContactForm();
 
@@ -65,7 +66,25 @@ function setupMobileMenu() {
   });
 }
 
-/* Filtros da vitrine e integração do único carrossel com o Bootstrap. */
+/* Duplica a sequência apenas para criar continuidade visual na animação. */
+function setupProjectMarquee() {
+  const marquee = document.querySelector("[data-project-marquee]");
+  const track = marquee?.querySelector("[data-project-marquee-track]");
+  const originalGroup = track?.querySelector("[data-project-marquee-group]:not([data-marquee-clone])");
+  if (!marquee || !track || !originalGroup) return;
+
+  if (!track.querySelector("[data-marquee-clone]")) {
+    const clonedGroup = originalGroup.cloneNode(true);
+    clonedGroup.setAttribute("data-marquee-clone", "");
+    clonedGroup.setAttribute("aria-hidden", "true");
+    clonedGroup.querySelectorAll("a").forEach((link) => link.setAttribute("tabindex", "-1"));
+    track.append(clonedGroup);
+  }
+
+  marquee.classList.add("is-ready");
+}
+
+/* Filtros da vitrine e integração do carrossel de projetos em destaque. */
 function setupProjectShowcase() {
   const projects = Array.from(document.querySelectorAll("[data-project]"));
   const filterButtons = Array.from(document.querySelectorAll("[data-project-filter]"));

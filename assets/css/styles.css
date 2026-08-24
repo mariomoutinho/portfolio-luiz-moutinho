@@ -199,11 +199,23 @@ em { color: var(--teal-bright); font-weight: 400; }
 .project-index-heading { display: grid; gap: .5rem; align-items: end; margin-bottom: 1.25rem; }
 .project-index-heading h2 { max-width: 18ch; margin-bottom: 0; font-size: clamp(1.8rem, 4vw, 2.8rem); }
 .project-index-heading > p { max-width: 26rem; margin-bottom: 0; color: var(--text-soft); }
-.project-icon-track { display: flex; gap: .7rem; overflow-x: auto; overscroll-behavior-inline: contain; padding: .15rem .1rem .7rem; scroll-snap-type: x mandatory; scrollbar-width: none; }
-.project-icon-track::-webkit-scrollbar { display: none; }
+.project-marquee { --project-gap: .7rem; --marquee-duration: 24s; width: 100%; max-width: 48rem; margin-inline: auto; overflow-x: auto; overflow-y: hidden; overscroll-behavior-inline: contain; scrollbar-width: none; }
+.project-marquee::-webkit-scrollbar { display: none; }
+.project-marquee-track { display: flex; width: max-content; padding-block: .15rem .7rem; will-change: transform; }
+.project-marquee-group { display: flex; flex-shrink: 0; align-items: stretch; gap: var(--project-gap); padding-right: var(--project-gap); }
+.project-marquee.is-ready { overflow: hidden; }
+.project-marquee.is-ready .project-marquee-track { animation: project-marquee-scroll var(--marquee-duration) linear infinite; }
 .project-icon-link { display: flex; flex: 0 0 5.5rem; min-height: 7.15rem; flex-direction: column; align-items: center; justify-content: center; gap: .55rem; padding: .55rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); color: var(--text-soft); font-size: .68rem; font-weight: 800; line-height: 1.2; text-align: center; text-decoration: none; scroll-snap-align: start; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
 .project-icon-link img { width: 3.5rem; height: 3.5rem; object-fit: contain; }
 .project-icon-link:hover { border-color: var(--teal); box-shadow: 0 8px 24px rgba(13,38,45,.08); transform: translateY(-2px); }
+@media (hover: hover) {
+  .project-marquee:hover .project-marquee-track { animation-play-state: paused; }
+}
+.project-marquee:focus-within .project-marquee-track { animation-play-state: paused; }
+@keyframes project-marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 .project-showcase { padding-block: 3.75rem 4.5rem; border-top: 1px solid var(--line); background: var(--surface-alt); }
 .showcase-intro { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
 .showcase-intro h2, .showcase-heading h2 { max-width: 17ch; margin-bottom: 0; font-size: clamp(2rem, 4.5vw, 3.45rem); }
@@ -407,9 +419,8 @@ em { color: var(--teal-bright); font-weight: 400; }
   .case-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(25rem, .88fr); gap: 3rem; }
   .portfolio-hero-visual { max-width: 37rem; }
   .portfolio-hero-visual img { max-height: 25rem; }
-  .project-icon-track { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); overflow: visible; }
-  .project-icon-link { min-width: 0; min-height: 7.6rem; padding-inline: .4rem; }
-  .project-icon-link img { width: 3.75rem; height: 3.75rem; }
+  .project-marquee .project-icon-link { min-height: 7.6rem; padding-inline: .4rem; }
+  .project-marquee .project-icon-link img { width: 3.75rem; height: 3.75rem; }
   #featured-projects-carousel { max-width: 47.5rem; }
   .featured-card { grid-template-columns: minmax(0, 1.08fr) minmax(19rem, .92fr); }
   .featured-card .project-media { min-height: 100%; aspect-ratio: auto; }
@@ -423,5 +434,8 @@ em { color: var(--teal-bright); font-weight: 400; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .project-marquee.is-ready { overflow-x: auto; overflow-y: hidden; }
+  .project-marquee-track { animation: none !important; transform: none !important; }
+  [data-marquee-clone] { display: none; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
