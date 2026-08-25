@@ -7,20 +7,8 @@
   <title>Portfólio | Luiz Moutinho</title>
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}</script>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-    crossorigin="anonymous"
-  >
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260824-marquee">
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"
-    defer
-  ></script>
-  <script src="assets/js/main.js?v=20260824-marquee" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body class="portfolio-page">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -98,18 +86,19 @@
         <div class="showcase-heading">
           <div><p class="section-index">Em destaque</p><h2 id="featured-title">Três projetos, três pontos de vista</h2></div>
           <div class="carousel-controls" aria-label="Controles do carrossel">
-            <button class="carousel-arrow" type="button" data-bs-target="#featured-projects-carousel" data-bs-slide="prev" aria-label="Projeto anterior"><span aria-hidden="true">←</span></button>
-            <button class="carousel-arrow" type="button" data-bs-target="#featured-projects-carousel" data-bs-slide="next" aria-label="Próximo projeto"><span aria-hidden="true">→</span></button>
+            <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Projeto anterior"><span aria-hidden="true">←</span></button>
+            <button class="carousel-arrow" type="button" data-carousel-next aria-label="Próximo projeto"><span aria-hidden="true">→</span></button>
             <button class="carousel-play-toggle" type="button" data-carousel-toggle aria-label="Pausar carrossel" title="Pausar carrossel"><span data-carousel-toggle-icon aria-hidden="true">Ⅱ</span><span data-carousel-toggle-label>Pausar</span></button>
           </div>
         </div>
 
-        <div id="featured-projects-carousel" class="project-carousel carousel slide" data-project-carousel tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque">
+        <div id="featured-projects-carousel" class="project-carousel" data-project-carousel tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque">
           <div class="carousel-inner">
-            <article id="projeto-orderflow" class="featured-card carousel-item active" data-project data-category="produto engenharia">
+            <article id="projeto-orderflow" class="featured-card carousel-slide" data-project data-category="produto engenharia">
               <div class="project-media"><img src="assets/img/covers/orderflow-cover.svg" width="1200" height="750" alt="Composição editorial do OrderFlow com três cartões de pedido conectados em sequência" loading="lazy" decoding="async"></div>
               <div class="featured-card-body">
                 <div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/orderflow.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div>
+                <p class="project-status project-status-applied">Aplicado em projeto</p>
                 <h3>OrderFlow</h3>
                 <p class="project-description">Gestão de pedidos de e-commerce do cadastro à atualização de status, conectando interface, API, domínio e testes.</p>
                 <ul class="tech-list" aria-label="Tecnologias do OrderFlow"><li>C#</li><li>.NET 8</li><li>Angular</li><li>TypeScript</li><li>xUnit</li></ul>
@@ -117,10 +106,11 @@
               </div>
             </article>
 
-            <article id="projeto-suinda" class="featured-card carousel-item" data-project data-category="produto ux-ui engenharia">
+            <article id="projeto-suinda" class="featured-card carousel-slide" data-project data-category="produto ux-ui engenharia">
               <div class="project-media"><img src="assets/img/covers/suinda-cover.svg" width="1200" height="750" alt="Composição editorial do Suinda com cartões de estudo e indicador circular de progresso" loading="lazy" decoding="async"></div>
               <div class="featured-card-body">
                 <div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/suinda.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · UX/UI · Engenharia</p></div>
+                <p class="project-status project-status-applied">Aplicado em projeto</p>
                 <h3>Suinda</h3>
                 <p class="project-description">Aplicativo web e mobile para criar baralhos, estudar com flashcards e acompanhar o progresso.</p>
                 <ul class="tech-list" aria-label="Tecnologias do Suinda"><li>JavaScript</li><li>PHP</li><li>Capacitor</li><li>SQLite</li><li>HTML</li><li>CSS</li></ul>
@@ -128,10 +118,11 @@
               </div>
             </article>
 
-            <article id="projeto-7-invernos" class="featured-card carousel-item" data-project data-category="produto ux-ui">
+            <article id="projeto-7-invernos" class="featured-card carousel-slide" data-project data-category="produto ux-ui">
               <div class="project-media"><img src="assets/img/covers/7-invernos-cover.svg" width="1200" height="750" alt="Composição editorial da 7 Invernos com seleção de casacos em uma interface responsiva" loading="lazy" decoding="async"></div>
               <div class="featured-card-body">
                 <div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/7-invernos.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · UX/UI</p></div>
+                <p class="project-status project-status-applied">Aplicado em projeto</p>
                 <h3>7 Invernos</h3>
                 <p class="project-description">Landing page comercial responsiva para apresentar a marca, orientar visitantes e encaminhar contatos.</p>
                 <ul class="tech-list" aria-label="Tecnologias da 7 Invernos"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Acessibilidade</li><li>GitHub Pages</li></ul>
@@ -141,10 +132,11 @@
           </div>
 
           <div class="carousel-indicators" aria-label="Escolher projeto em destaque">
-            <button class="active" type="button" data-bs-target="#featured-projects-carousel" data-bs-slide-to="0" aria-label="Ir para OrderFlow" aria-current="true"></button>
-            <button type="button" data-bs-target="#featured-projects-carousel" data-bs-slide-to="1" aria-label="Ir para Suinda"></button>
-            <button type="button" data-bs-target="#featured-projects-carousel" data-bs-slide-to="2" aria-label="Ir para 7 Invernos"></button>
+            <button type="button" data-carousel-slide-to="0" aria-label="Ir para OrderFlow"></button>
+            <button type="button" data-carousel-slide-to="1" aria-label="Ir para Suinda"></button>
+            <button type="button" data-carousel-slide-to="2" aria-label="Ir para 7 Invernos"></button>
           </div>
+          <p class="sr-only" data-carousel-announcement aria-live="polite" aria-atomic="true"></p>
         </div>
       </section>
 
@@ -153,27 +145,27 @@
         <div class="project-grid">
           <article id="projeto-pindorama-rpg" class="compact-project-card" data-project data-category="produto ux-ui engenharia">
             <div class="project-media"><img src="assets/img/covers/pindorama-rpg-cover.svg" width="1200" height="750" alt="Composição editorial do Pindorama RPG com portal, painel e módulos de jogo" loading="lazy" decoding="async"></div>
-            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/pindorama-rpg.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · UX/UI · Engenharia</p></div><h3>Pindorama RPG</h3><p class="project-description">Plataforma digital para organizar regras, personagens e ferramentas de um universo de RPG brasileiro.</p><ul class="tech-list" aria-label="Tecnologias do Pindorama RPG"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>JSON</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://pindoramarpg.coletivopindorama.com.br/" target="_blank" rel="noopener noreferrer">Abrir projeto <span aria-hidden="true">↗</span></a><a class="project-link" href="https://github.com/mariomoutinho/pindoramarpg" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
+            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/pindorama-rpg.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · UX/UI · Engenharia</p></div><p class="project-status project-status-applied">Aplicado em projeto</p><h3>Pindorama RPG</h3><p class="project-description">Plataforma digital para organizar regras, personagens e ferramentas de um universo de RPG brasileiro.</p><ul class="tech-list" aria-label="Tecnologias do Pindorama RPG"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>JSON</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://pindoramarpg.coletivopindorama.com.br/" target="_blank" rel="noopener noreferrer">Abrir projeto <span aria-hidden="true">↗</span></a><a class="project-link" href="https://github.com/mariomoutinho/pindoramarpg" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
           </article>
 
           <article id="projeto-ecossistema-pindorama" class="compact-project-card" data-project data-category="produto engenharia">
             <div class="project-media"><img src="assets/img/covers/ecossistema-pindorama-cover.svg" width="1200" height="750" alt="Composição editorial do Ecossistema Pindorama com módulos conectados a um núcleo" loading="lazy" decoding="async"></div>
-            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/ecossistema-pindorama.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div><h3>Ecossistema Pindorama</h3><p class="project-description">Portal que reúne saúde, educação, cultura e ferramentas digitais em uma presença modular.</p><ul class="tech-list" aria-label="Tecnologias do Ecossistema Pindorama"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>GitHub Actions</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://www.coletivopindorama.com.br/" target="_blank" rel="noopener noreferrer">Abrir projeto <span aria-hidden="true">↗</span></a><a class="project-link" href="https://github.com/mariomoutinho/ecossistema-pindorama-site" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
+            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/ecossistema-pindorama.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div><p class="project-status project-status-applied">Aplicado em projeto</p><h3>Ecossistema Pindorama</h3><p class="project-description">Portal que reúne saúde, educação, cultura e ferramentas digitais em uma presença modular.</p><ul class="tech-list" aria-label="Tecnologias do Ecossistema Pindorama"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>GitHub Actions</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://www.coletivopindorama.com.br/" target="_blank" rel="noopener noreferrer">Abrir projeto <span aria-hidden="true">↗</span></a><a class="project-link" href="https://github.com/mariomoutinho/ecossistema-pindorama-site" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
           </article>
 
           <article id="projeto-perovsun" class="compact-project-card" data-project data-category="ux-ui engenharia">
             <div class="project-media"><img src="assets/img/covers/perovsun-cover.svg" width="1200" height="750" alt="Composição editorial da PerovSun com sol e estrutura cristalina sobre painel" loading="lazy" decoding="async"></div>
-            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/perovsun.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">UX/UI · Engenharia</p></div><h3>PerovSun</h3><p class="project-description">Landing page estática para apresentar uma proposta de tecnologia solar com leitura progressiva.</p><ul class="tech-list" aria-label="Tecnologias da PerovSun"><li>Astro</li><li>TypeScript</li><li>HTML</li><li>GitHub Pages</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/perovsun" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
+            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/perovsun.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">UX/UI · Engenharia</p></div><p class="project-status project-status-applied">Aplicado em projeto</p><h3>PerovSun</h3><p class="project-description">Landing page estática para apresentar uma proposta de tecnologia solar com leitura progressiva.</p><ul class="tech-list" aria-label="Tecnologias da PerovSun"><li>Astro</li><li>TypeScript</li><li>HTML</li><li>GitHub Pages</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/perovsun" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
           </article>
 
           <article id="projeto-framily" class="compact-project-card" data-project data-category="produto engenharia">
             <div class="project-media"><img src="assets/img/covers/framily-cover.svg" width="1200" height="750" alt="Composição editorial do Framily com casa e painel de progresso de tarefas" loading="lazy" decoding="async"></div>
-            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/framily.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div><h3>Framily</h3><p class="project-description">Aplicativo gamificado que transforma rotinas domésticas em missões compartilhadas.</p><ul class="tech-list" aria-label="Tecnologias do Framily"><li>Next.js</li><li>React</li><li>Laravel</li><li>MySQL</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/framily" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
+            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/framily.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div><p class="project-status project-status-applied">Aplicado em projeto</p><h3>Framily</h3><p class="project-description">Aplicativo gamificado que transforma rotinas domésticas em missões compartilhadas.</p><ul class="tech-list" aria-label="Tecnologias do Framily"><li>Next.js</li><li>React</li><li>Laravel</li><li>MySQL</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/framily" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
           </article>
 
           <article id="projeto-rota-plena" class="compact-project-card" data-project data-category="produto engenharia">
             <div class="project-media"><img src="assets/img/covers/rota-plena-cover.svg" width="1200" height="750" alt="Composição editorial da Rota Plena com caminho e marcos de progresso" loading="lazy" decoding="async"></div>
-            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/rota-plena.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div><h3>Rota Plena</h3><p class="project-description">Dashboard que converte estratégia, tarefas, agenda e acompanhamento em ações cotidianas.</p><ul class="tech-list" aria-label="Tecnologias da Rota Plena"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>WhatsApp API</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/rota-plena" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
+            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/rota-plena.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Produto · Engenharia</p></div><p class="project-status project-status-applied">Aplicado em projeto</p><h3>Rota Plena</h3><p class="project-description">Dashboard que converte estratégia, tarefas, agenda e acompanhamento em ações cotidianas.</p><ul class="tech-list" aria-label="Tecnologias da Rota Plena"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>WhatsApp API</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/rota-plena" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
           </article>
 
           <article id="projeto-o-balaio" class="compact-project-card" data-project data-category="produto engenharia">
@@ -183,7 +175,7 @@
 
           <article id="projeto-full-stack-ia" class="compact-project-card" data-project data-category="engenharia">
             <div class="project-media"><img src="assets/img/covers/fullstack-ia-cover.svg" width="1200" height="750" alt="Composição editorial de Full Stack na Era da IA com código, rede conectada e documento validado" loading="lazy" decoding="async"></div>
-            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/fullstack-ia.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Engenharia</p></div><h3>Full Stack na Era da IA</h3><p class="project-description">Guia de aprendizagem sobre desenvolvimento com IA generativa, agents, contexto e validação.</p><ul class="tech-list" aria-label="Temas de Full Stack na Era da IA"><li>NotebookLM</li><li>IA generativa</li><li>Agents</li><li>MCP</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/notebooklm-metodologia-fullstack-ia" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
+            <div class="compact-card-body"><div class="project-identity"><img class="project-symbol" src="assets/img/icons/projects/fullstack-ia.svg" width="256" height="256" alt="" loading="lazy"><p class="project-category">Engenharia</p></div><p class="project-status project-status-applied">Aplicado em projeto</p><h3>Full Stack na Era da IA</h3><p class="project-description">Guia de aprendizagem sobre desenvolvimento com IA generativa, agents, contexto e validação.</p><ul class="tech-list" aria-label="Temas de Full Stack na Era da IA"><li>NotebookLM</li><li>IA generativa</li><li>Agents</li><li>MCP</li></ul><div class="project-actions"><a class="project-link project-link-primary" href="https://github.com/mariomoutinho/notebooklm-metodologia-fullstack-ia" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
           </article>
         </div>
       </section>
@@ -198,7 +190,7 @@
 
     <section class="process shell"><p class="section-index">Como construo</p><div><h2>Um processo em evolução</h2><ol><li><span>01</span><div><h3>Entender</h3><p>Investigar o problema, o contexto e para quem a solução será útil.</p></div></li><li><span>02</span><div><h3>Estruturar</h3><p>Organizar conteúdo, fluxos e tecnologia em uma base simples.</p></div></li><li><span>03</span><div><h3>Construir e testar</h3><p>Implementar em ciclos curtos, verificar e aprender com o resultado.</p></div></li></ol></div></section>
 
-    <section class="portfolio-cta"><div class="shell portfolio-cta-inner"><div><p class="eyebrow eyebrow-light"><span></span> Próxima conversa</p><h2>Busco um estágio para continuar aprendendo e contribuindo.</h2><p>Estou disponível para oportunidades em desenvolvimento de software, produto ou UX/UI.</p></div><div class="cta-actions"><a class="button button-warm" href="contato.html">Entrar em contato</a><a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="portfolio-cta"><div class="shell portfolio-cta-inner"><div><p class="eyebrow eyebrow-light"><span></span> Próxima conversa</p><h2>Boas ideias crescem quando viram conversa.</h2><p>Entre em contato para conversar sobre desenvolvimento de software, produto ou UX/UI.</p></div><div class="cta-actions"><a class="button button-warm" href="contato.html">Entrar em contato</a><a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
 
   <footer class="site-footer"><div class="shell footer-grid"><div><a class="footer-brand" href="index.html">Luiz Moutinho</a><p>Saúde, movimento e tecnologia em uma trajetória de aprendizado contínuo.</p></div><nav aria-label="Navegação do rodapé"><p>Navegue</p><a href="index.html">Sobre mim</a><a href="formacao.html">Formação</a><a href="portfolio.html">Portfólio</a><a href="contato.html">Contato</a></nav><div class="footer-links"><p>Conecte-se</p><a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><div class="shell footer-bottom"><small>© <span data-current-year>2026</span> Luiz Moutinho</small><small>Feito com HTML, CSS e JavaScript.</small></div></footer>

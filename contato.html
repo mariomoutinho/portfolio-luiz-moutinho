@@ -22,15 +22,16 @@
         <p class="section-index">Canais diretos</p>
         <h2>Vamos conversar?</h2><p>Estou em Recife e aberto a conexões que contribuam para minha evolução em desenvolvimento de software.</p>
         <address>
-          <a href="mailto:luizmariomoutinho1@gmail.com"><span>E-mail</span><strong>luizmariomoutinho1@gmail.com</strong></a>
-          <a href="tel:+5581992579809"><span>Telefone</span><strong>(81) 9 9257-9809</strong></a>
+          <div class="contact-channel"><a href="mailto:luizmariomoutinho1@gmail.com"><span>E-mail</span><strong>luizmariomoutinho1@gmail.com</strong></a><button class="copy-button" type="button" data-copy-value="luizmariomoutinho1@gmail.com" data-copy-label="E-mail">Copiar</button></div>
+          <div class="contact-channel"><a href="tel:+5581992579809"><span>Telefone</span><strong>(81) 9 9257-9809</strong></a><button class="copy-button" type="button" data-copy-value="+5581992579809" data-copy-label="Telefone">Copiar</button></div>
           <a href="https://www.linkedin.com/in/luiz-moutinho-77061424b/" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><strong>Conectar no LinkedIn ↗</strong></a>
           <a href="https://github.com/mariomoutinho" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>Ver meus repositórios ↗</strong></a>
         </address>
+        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
       </div>
       <div class="form-panel">
         <div><p class="eyebrow eyebrow-light"><span></span> Prepare uma mensagem</p><h2>Escreva para mim</h2><p id="form-explanation">Ao continuar, seu aplicativo de e-mail será aberto com a mensagem preenchida. Revise o conteúdo e confirme o envio por lá.</p></div>
-        <form id="contact-form" aria-describedby="form-explanation" novalidate>
+        <form id="contact-form" action="mailto:luizmariomoutinho1@gmail.com" method="post" enctype="text/plain" aria-describedby="form-explanation">
           <div class="field"><label for="nome">Nome <span aria-hidden="true">*</span></label><input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="erro-nome" required><p class="field-error" id="erro-nome"></p></div>
           <div class="field"><label for="email">E-mail <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" aria-describedby="erro-email" required><p class="field-error" id="erro-email"></p></div>
           <div class="field"><label for="mensagem">Mensagem <span aria-hidden="true">*</span></label><textarea id="mensagem" name="mensagem" rows="6" aria-describedby="erro-mensagem contador-mensagem" required></textarea><div class="field-meta"><p class="field-error" id="erro-mensagem"></p><span id="contador-mensagem">0 caracteres</span></div></div>

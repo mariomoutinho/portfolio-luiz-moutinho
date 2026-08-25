@@ -6,10 +6,9 @@ Currículo online responsivo desenvolvido para a atividade de Fundamentos da Pro
 
 - HTML5 semântico
 - CSS3 puro, com layout mobile-first e temas claro/escuro
-- JavaScript próprio para menu, tema, filtros e validação do formulário
-- Bootstrap 5.3.8 por CDN, usado somente no carrossel de projetos em destaque
+- JavaScript próprio para menu, tema, filtros, carrossel e validação do formulário
 
-O site continua estático, sem dependências npm ou etapa de build. O CSS e o JavaScript do Bootstrap são carregados por CDN apenas em `portfolio.html`; o restante do layout não foi reconstruído com o framework.
+O site continua estático, sem dependências npm, frameworks ou etapa de build. Toda a interface e todas as interações são implementadas com HTML, CSS e JavaScript puro.
 
 ## Estrutura
 
@@ -50,9 +49,13 @@ Abra `http://localhost:8000`. O site também permanece legível ao abrir os arqu
 
 - Páginas independentes com navegação consistente e três estudos de caso
 - Página atual indicada visualmente e por `aria-current`
-- Menu móvel operável por botão e tecla Escape
+- Barra de status, indicador de página e progresso de leitura
+- Menu móvel operável por botão, links e tecla Escape
 - Tema inicial alinhado ao sistema, com preferência persistida
-- Vitrine filtrável com Carousel do Bootstrap e faixa contínua de atalhos para os projetos
+- Vitrine filtrável com carrossel próprio e faixa contínua de atalhos para os projetos
+- Navegação do carrossel por controles, teclado e gesto horizontal
+- Revelação progressiva, botão de retorno ao topo e índice ativo nos estudos de caso
+- Cópia acessível de e-mail e telefone com feedback textual
 - Formulário que valida os campos e prepara um `mailto:`, sem simular envio
 - Contraste, foco visível e suporte a `prefers-reduced-motion`
 - Caminhos relativos compatíveis com páginas de projeto no GitHub Pages
