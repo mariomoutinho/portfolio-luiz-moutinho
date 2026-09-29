@@ -175,9 +175,9 @@ code { padding: .12rem .3rem; border: 1px solid var(--line); border-radius: .3re
 @keyframes cursor-blink { 50% { opacity: 0; } }
 .hero-lead { max-width: 43rem; color: var(--text-soft); font-size: 1rem; }
 .hero-chips { margin-top: 1.25rem; }
-.hero-visual { position: relative; display: grid; width: 13.5rem; min-width: 0; aspect-ratio: 1; place-items: center; margin: 0 auto; isolation: isolate; }
+.hero-visual { position: relative; display: grid; width: min(17rem, 100%); min-width: 0; aspect-ratio: 1; place-items: center; margin: 0 auto; isolation: isolate; }
 .portrait-glow { position: absolute; z-index: -1; width: 100%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(69, 184, 136, .28), transparent 68%); filter: blur(12px); }
-.hero-portrait { width: 9.5rem; height: 9.5rem; border: 2px solid var(--accent-strong); border-radius: 50%; box-shadow: 0 0 0 .45rem var(--accent-soft), 0 0 0 .55rem rgba(100, 213, 164, .2); object-fit: cover; object-position: 50% 27%; }
+.hero-portrait { width: 100%; height: auto; aspect-ratio: 1; border: 2px solid var(--accent-strong); border-radius: 50%; box-shadow: 0 0 0 .45rem var(--accent-soft), 0 0 0 .55rem rgba(100, 213, 164, .2); object-fit: cover; object-position: 50% 27%; }
 .visual-note { position: absolute; right: 0; bottom: .45rem; margin: 0; padding: .42rem .6rem; border: 1px solid var(--line-strong); border-radius: .4rem; background: var(--surface-raised); box-shadow: var(--shadow-soft); color: var(--text-soft); font-family: var(--font-mono); font-size: .6rem; }
 .visual-note span { color: var(--warm); }
 .statement { padding-block: 5rem; border-block: 1px solid #28423c; background: var(--panel); color: var(--panel-text); }
@@ -415,8 +415,7 @@ code { padding: .12rem .3rem; border: 1px solid var(--line); border-radius: .3re
 @media (min-width: 42rem) {
   .shell { width: min(calc(100% - 3rem), 76rem); }
   .hero { grid-template-columns: 13.5rem minmax(0, 1fr); gap: 3rem; }
-  .hero-visual { margin: 0; }
-  .hero-portrait { width: 10.5rem; height: 10.5rem; }
+  .hero-visual { width: 100%; margin: 0; }
   .statement-grid, .education-section, .process { grid-template-columns: 11rem minmax(0, 1fr); }
   .section-heading, .page-title, .skills-section, .showcase-intro { grid-template-columns: minmax(0, 1fr) minmax(18rem, .58fr); align-items: end; }
   .value-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -465,9 +464,7 @@ code { padding: .12rem .3rem; border: 1px solid var(--line); border-radius: .3re
   .header-actions { grid-column: 3; justify-self: end; }
   .header-actions:empty { min-width: 2.75rem; }
   .menu-toggle { display: none; }
-  .hero { grid-template-columns: 15rem minmax(0, 1fr); gap: 4.5rem; }
-  .hero-visual { width: 15rem; }
-  .hero-portrait { width: 11rem; height: 11rem; }
+  .hero { grid-template-columns: 21rem minmax(0, 1fr); gap: 2rem; }
   .course-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .portfolio-hero { grid-template-columns: minmax(0, 1.08fr) minmax(22rem, .78fr); gap: 3rem; }
   .featured-card { grid-template-columns: minmax(0, 1.05fr) minmax(19rem, .95fr); }
